@@ -29,6 +29,22 @@ android {
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                // The group ID must match your GitHub handle for JitPack
+                groupId = 'com.github.nghtmr'
+                artifactId = 'pluto'
+                version = '1.0.3'
+
+                // Applies the release build variant (AAR)
+                from components.release
+            }
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
